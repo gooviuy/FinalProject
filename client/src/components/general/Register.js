@@ -22,11 +22,15 @@ const Register = () => {
   };
 
   return (
-    <Fragment>
-      <h1>Sign Up</h1>
-      <p>Create your account and get fun</p>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
+    <form className="register">
+      <h1 className="large text-primary">Sign Up</h1>
+      <p className="lead">
+        {" "}
+        <i className="fas fa-user" />
+        Create your account and get fun
+      </p>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
+        <div className="form-group">
           <input
             type="text"
             placeholder="name"
@@ -36,7 +40,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <input
             type="email"
             placeholder="email"
@@ -46,7 +50,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <input
             type="password"
             placeholder="password"
@@ -56,12 +60,12 @@ const Register = () => {
             required
           />
         </div>
-        <input type="submit" className="brn brn-primary" value="Register" />
-        <p>
+        <input type="submit" className="btn btn-primary" value="Register" />
+        <p className="my-1">
           Do you have an account ? <Link to="/login">Sign In</Link>
         </p>
       </form>
-    </Fragment>
+    </form>
   );
 };
 

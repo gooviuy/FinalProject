@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 //import { getUser, removeUserSession } from './Utils/Common';
 
 const Landing = () => {
@@ -14,7 +14,10 @@ const Landing = () => {
   return (
     <form>
       <div>
-        Choose a topic to start the Quiz! <br />
+        <h1 className="large text-primary">
+          {" "}
+          Choose a topic to start the Quiz!{" "}
+        </h1>{" "}
         <br />
       </div>
       <div className="input-group mb-3">
@@ -27,12 +30,13 @@ const Landing = () => {
           <option value="2">History</option>
           <option value="3">Football</option>
         </select>
+        <input type='submit' className="btn btn-primary" value='Submit' />
       </div>
       <div>
         <br />
-        There is always time to come back !
-        <br />
-        <input type="button" value="Logout" />
+        <h4 className="my-2"> There is always time to come back!</h4>
+
+        <input type="button" className='btn btn-dark my-1'  value="Logout" />
       </div>
     </form>
   );
