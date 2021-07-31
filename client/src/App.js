@@ -6,6 +6,10 @@ import Login from "./components/screens/Login/index";
 import Register from "./components/general/Register";
 import Home from "./components/screens/Home";
 import Landing from "./components/screens/Landing";
+import Music from "./components/screens/Quiz/Music";
+import Node from "./components/screens/Quiz/Node";
+import Sports from "./components/screens/Quiz/Sports";
+import Result from "./components/screens/Results";
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/landing" component={Landing} />
+          <Route exact path="/music" component={Music} />
+          <Route exact path="/node" component={Node} />
+          <Route exact path="/sports" component={Sports} />
+          <Route exact path="/results" components={Result} />
         </Switch>
       </section>
     </Router>
