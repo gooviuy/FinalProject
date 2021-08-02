@@ -11,6 +11,7 @@ import Node from "./components/screens/Quiz/Node";
 import Sports from "./components/screens/Quiz/Sports";
 import Result from "./components/screens/Results";
 
+
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/node" component={Node} />
           <Route exact path="/sports" component={Sports} />
           <Route exact path="/results" components={Result} />
+          
         </Switch>
       </section>
     </Router>

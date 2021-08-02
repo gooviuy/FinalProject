@@ -7,7 +7,7 @@ export const types = {
   LOGIN_FAILURE: "LOGIN_FAILURE",
   LOGOUT: "LOGOUT"
 };
-
+//que sería login change?
 export const loginFormChange = (payload) => {
   return { type: types.LOGIN_CHANGE, payload: payload };
 };
@@ -21,6 +21,8 @@ const loginError = () => {
   return { type: types.LOGIN_FAILURE };
 };
 
+
+//que se supone que hace esto ?
 export const login = (payload) => async (dispatch) => {
   dispatch(loginRequest());
   try {
@@ -32,4 +34,4 @@ export const login = (payload) => async (dispatch) => {
 };
 
 // Logout
-//export const logout = () => ({ type: types.LOGOUT });
+export const logout = () => ({ type: types.LOGOUT });
