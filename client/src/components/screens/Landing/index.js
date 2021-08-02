@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as topicActions from "../../../redux/actions/topicActions"
 //import { getUser, removeUserSession } from './Utils/Common';
+
+//conseguir qe la info llegue al backend
 
 const Landing = () => {
   //const user = getUser();
+
+  const {selectedTopic} = useSelector(state => state.topic);
+  const dispatch = useDispatch();
+  const onChange = (e) => {
+   // debugger
+    dispatch(topicActions.topicChange({ selectedTopic: e.target.value }));
+  };
+
+const onClick = (e) => {
+  e.preventDefault()
+  debugger
+  dispatch(topicActions.topic({ selectedTopic }));
+}
 
   // handle click event of logout button
   // const handleLogout = (props) => {
@@ -12,7 +29,7 @@ const Landing = () => {
   //const [selectTopic, setTopic] = useState("");
 
   return (
-    <form>
+    <form >
       <div>
         <h1 className="large text-primary">
           {" "}
@@ -24,13 +41,15 @@ const Landing = () => {
         <label className="input-group-text" for="inputGroupSelect01">
           Topics
         </label>
-        <select className="form-select" id="inputGroupSelect01">
+        <select onChange={onChange} value={selectedTopic} className="form-select" id="inputGroupSelect01">
           <option value=""></option>
-          <option value="1">Music</option>
-          <option value="2">History</option>
-          <option value="3">Football</option>
+          <option value="Music">Music</option>
+          <option value="History">History</option>
+          <option value="Football">Football</option>
         </select>
-        <input type='submit' className="btn btn-primary" value='Submit' />
+        <button  onClick={onClick} className="btn btn-primary">
+          Submit
+        </button>
       </div>
       <div>
         <br />

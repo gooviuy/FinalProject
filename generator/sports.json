@@ -1,0 +1,14 @@
+{
+  "Sports": {
+    "q1": {
+      "question": "What is the best player?",
+      "options": ["Cristiano Ronaldo", " Messi", " Suarez"],
+      "answer": "Messi"
+    },
+    "q2": {
+      "question": "What is the best stadium?",
+      "options": ["Estadio Centenario", "  Anfield", "La Bombonera"],
+      "answer": "Estadio Centenario"
+    }
+  }
+}

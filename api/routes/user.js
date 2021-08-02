@@ -7,7 +7,7 @@ const user = {
 }
 //login
 router.post("/", function (req, res) {
-  console.log("llgo requet")
+  console.log("llego request")
   let post = req.body;
   //console.log(req.body)
   if (post.username === "gonza" && post.password === "gonza123") {

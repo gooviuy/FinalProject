@@ -1,9 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const checkAuth = require ("../../middleware/checkAuth");
+//const checkAuth = require ("../../middleware/checkAuth");
+//checkAuth,
 
-router.get("/topic", checkAuth, function (req, res) {
-  res.send("if you are viewing this page it means you are logged in");
+const topics = {
+  topic: "Music",
+};
+//login
+router.post("/", function (req, res) {
+  console.log("llego request");
+  let post = req.body;
+
+  if (post.topic === "Music") {
+    res.json({ topics });
+  } else {
+    res.json({ err: "Topic doesnt exists" });
+  }
+});
+
+router.post("/", function (req, res) {
+  res.send("you selected a topic");
 });
 
 module.exports = router;

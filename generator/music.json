@@ -1,0 +1,18 @@
+{
+  "Music": {
+    "q1": {
+      "question": "What is the best style?",
+      "options": ["Plena", "  Reggaeton", " Rock"],
+      "answer": "Rock"
+    },
+    "q2": {
+      "question": "The highest music viewed video on youtube 2017?",
+      "options": [
+        "See you Again-Wiz Khalifa",
+        " Despacito-Luis Fonsi ",
+        "Shape of you - Ed Sheeran"
+      ],
+      "answer": "Estadio Centenario"
+    }
+  }
+}

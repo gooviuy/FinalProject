@@ -1,0 +1,19 @@
+{
+    "NodeJs": {
+      "q1": {
+        "question": "What is NPM?",
+        "options": [
+          "Nuget Package Manager",
+          " Package manager for the Javascript programming language",
+          "Package manager for Node.js"
+        ],
+        "answer": "Package manager for Node.js"
+      },
+      "q2": {
+        "question": "Does nodejs run on windows?",
+        "options": ["Yes", " No"],
+        "answer": "Yes"
+      }
+    }
+  }
+  

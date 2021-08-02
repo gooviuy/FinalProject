@@ -6,7 +6,7 @@ constructor() {
   }
 
   async login(data) {
-    debugger;
+  
     try{
     
     const result = await client.post("login/", data);
@@ -17,7 +17,7 @@ constructor() {
       'Content-Type': 'application/json'
     }
   })*/
-    debugger;
+    
     return result.data;
   }
     catch(err){
