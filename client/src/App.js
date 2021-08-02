@@ -10,10 +10,11 @@ import Music from "./components/screens/Quiz/Music";
 import Node from "./components/screens/Quiz/Node";
 import Sports from "./components/screens/Quiz/Sports";
 import Result from "./components/screens/Results";
+import { useSelector } from "react-redux";
 
 
 function App() {
-  return (
+ return (
     <Router>
       <Route exact path="/" component={Home} />
       <section className="container">

@@ -5,6 +5,8 @@ export default function loginReducer(state = {}, action) {
     switch(action.type){
         case loginActions.types.LOGIN_CHANGE:
             return {...state,...action.payload}
+        case loginActions.types.LOGIN_SUCCESS:
+            return {...state,user:action.payload}
         default:
             return {}
     }
