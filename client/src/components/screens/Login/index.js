@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Input from "../../input";
 import * as loginActions from "../../../redux/actions/loginActions";
 
 const Login = (props) => {
+  const user = useSelector(state => state.login.user)
+   const history = useHistory()
   const dispatch = useDispatch();
   const { username, password } = useSelector((state) => state.login);
   const onChange = (e) => {
     dispatch(loginActions.loginFormChange({ [e.target.name]: e.target.value }));
   };
-  const onClick = () => {
+
+
+  useEffect(() => {
+if (user){
+history.push("/landing")
+}
+  },[user])
+  
+  
+
+  const onClick = (e) => {
+    debugger;
+    e.preventDefault()
+    e.stopPropagation()
     dispatch(loginActions.login({ username, password }));
   };
   return (

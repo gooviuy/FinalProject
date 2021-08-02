@@ -1,12 +1,30 @@
-import axios from "axios";
+import client from ".";
 
-const loginController = {
-  login: async (data) => {
+class loginController {
+constructor() {
+   
+  }
+
+  async login(data) {
     debugger;
-    const result = await axios.post("http://127.0.0.1:8000/login", data);
+    try{
+    
+    const result = await client.post("login/", data);
+   /*const result = await fetch("http://localhost:8000/login", {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(data), // data can be `string` or {object}!
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })*/
     debugger;
-    return result;
-  },
+    return result.data;
+  }
+    catch(err){
+      debugger;
+      console.log(err)
+    }
+  }
 };
-
-export default loginController;
+const loginContr = new loginController()
+export default loginContr;

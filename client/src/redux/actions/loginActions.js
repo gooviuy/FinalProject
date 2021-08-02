@@ -1,3 +1,4 @@
+import client from "../../controllers";
 import loginController from "../../controllers/loginController";
 
 export const types = {
@@ -14,8 +15,8 @@ export const loginFormChange = (payload) => {
 const loginRequest = () => {
   return { type: types.LOGIN_REQUEST };
 };
-const loginSucccess = () => {
-  return { type: types.LOGIN_SUCCESS };
+const loginSucccess = (user) => {
+  return { type: types.LOGIN_SUCCESS,payload:user };
 };
 const loginError = () => {
   return { type: types.LOGIN_FAILURE };
@@ -24,9 +25,21 @@ const loginError = () => {
 export const login = (payload) => async (dispatch) => {
   dispatch(loginRequest());
   try {
+    const s = client;
+    debugger;
     const result = await loginController.login(payload);
-    dispatch(loginSucccess());
+  // const result = await client.post("login/",payload);
+ /* const result = await fetch("http://localhost:8000/login", {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(payload), // data can be `string` or {object}!
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })*/
+   debugger;
+    dispatch(loginSucccess(result.user));
   } catch (err) {
+    debugger;
     dispatch(loginError());
   }
 };

@@ -1,8 +1,11 @@
 const express = require("express");
+var cors=require('cors');
+
+
 const app = express();
 const connectDB = require("./config/db");
 // Connect Database
-connectDB();
+//connectDB();
 
 // Middleware
 app.use(express.json({ extended: false }));
@@ -19,6 +22,7 @@ app.post("/login", (req, res) => {
     res.send("login")
 })
 */
+app.use(cors({origin:true,credentials: true}));
 app.use("/landing", require("./api/routes/topic"));
 app.use("/login", require("./api/routes/user"));
 
