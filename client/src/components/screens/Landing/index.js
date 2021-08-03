@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as topicActions from "../../../redux/actions/topicActions"
 //import { getUser, removeUserSession } from './Utils/Common';
 
@@ -7,17 +8,23 @@ import * as topicActions from "../../../redux/actions/topicActions"
 
 const Landing = () => {
   //const user = getUser();
-
+const topic = useSelector(state=> state.topic.topic)
+const history = useHistory()
   const {selectedTopic} = useSelector(state => state.topic);
   const dispatch = useDispatch();
   const onChange = (e) => {
-   // debugger
+
     dispatch(topicActions.topicChange({ selectedTopic: e.target.value }));
   };
 
+  useEffect(()=>{
+    if (topic){
+history.push(`/quiz`)}
+  },[topic])
+
 const onClick = (e) => {
   e.preventDefault()
-  debugger
+ 
   dispatch(topicActions.topic({ selectedTopic }));
 }
 
@@ -44,8 +51,8 @@ const onClick = (e) => {
         <select onChange={onChange} value={selectedTopic} className="form-select" id="inputGroupSelect01">
           <option value=""></option>
           <option value="Music">Music</option>
-          <option value="History">History</option>
-          <option value="Football">Football</option>
+          <option value="Sports">Sports</option>
+          <option value="Node">Node</option>
         </select>
         <button  onClick={onClick} className="btn btn-primary">
           Submit
