@@ -15,6 +15,7 @@ const topicRequest = () => {
   return { type: types.TOPIC_REQUEST };
 };
 const topicSucccess = (topic) => {
+
   return { type: types.TOPIC_SUCCESS, payload: topic };
 };
 const topicFailure = () => {
@@ -27,8 +28,12 @@ export const topic = (payload) => async (dispatch) => {
     const a = client;
 
     const result = await topicController.topic({topic:payload.selectedTopic});
-debugger
-    dispatch(topicSucccess(result.topics));
+
+const s = JSON.stringify(result.quiz)
+;
+const jsons = JSON.parse(result.quiz)
+;
+    dispatch(topicSucccess(jsons));
   } catch (err) {
     dispatch(topicFailure());
   }

@@ -21,7 +21,7 @@ constructor() {
     return result.data;
   }
     catch(err){
-      debugger;
+
       console.log(err)
     }
   }
