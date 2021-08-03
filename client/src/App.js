@@ -10,11 +10,12 @@ import Quiz from "./components/screens/Quiz";
 
 
 function App() {
+  debugger;
  return (
     <Router>
       <Route exact path="/" component={Home} />
         <Switch> 
-      <Route  path="/quiz" components={Quiz} />
+      <Route  path="/quiz" ><Quiz /></Route>
       <Route  path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route  path="/landing" component={Landing} />
