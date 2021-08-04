@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as topicActions from "../../../redux/actions/topicActions"
+import * as loginActions from "../../../redux/actions/loginActions"
+
 //import { getUser, removeUserSession } from './Utils/Common';
 
 //conseguir qe la info llegue al backend
@@ -19,7 +21,8 @@ const history = useHistory()
 
   useEffect(()=>{
     if (topic){
-history.push(`/quiz`)}
+history.push(`/quiz`)
+}
   },[topic])
 
 const onClick = (e) => {
@@ -35,6 +38,10 @@ const onClick = (e) => {
 
   //const [selectTopic, setTopic] = useState("");
 
+  const onLogoutClick = (e) => {
+    e.preventDefault()
+dispatch(loginActions.logout())
+  }
   return (
     <form >
       <div>
@@ -62,7 +69,7 @@ const onClick = (e) => {
         <br />
         <h4 className="my-2"> There is always time to come back!</h4>
 
-        <input type="button" className='btn btn-dark my-1'  value="Logout" />
+        <input type="button" onClick={onLogoutClick} className='btn btn-dark my-1'  value="Logout" />
       </div>
     </form>
   );

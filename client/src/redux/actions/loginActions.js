@@ -8,6 +8,11 @@ export const types = {
   LOGIN_FAILURE: "LOGIN_FAILURE",
   LOGOUT: "LOGOUT",
 };
+
+export const logout = () => {
+  return { type: types.LOGOUT};
+
+}
 //que sería login change?
 export const loginFormChange = (payload) => {
   return { type: types.LOGIN_CHANGE, payload: payload };
@@ -18,8 +23,8 @@ const loginRequest = () => {
 const loginSucccess = (user) => {
   return { type: types.LOGIN_SUCCESS, payload: user };
 };
-const loginError = () => {
-  return { type: types.LOGIN_FAILURE };
+const loginError = (payload) => {
+  return { type: types.LOGIN_FAILURE, payload };
 };
 
 
@@ -27,17 +32,14 @@ const loginError = () => {
 export const login = (payload) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const s = client;
 
     const result = await loginController.login(payload);
-    // const result = await client.post("login/",payload);
-    /* const result = await fetch("http://localhost:8000/login", {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(payload), // data can be `string` or {object}!
-    headers:{
-      'Content-Type': 'application/json'
+    debugger;
+    if(result.err){
+      dispatch(loginError({message:"Usuario o contraseña errados"}))
+      return;
     }
-  })*/
+ 
 
     dispatch(loginSucccess(result.user));
   } catch (err) {

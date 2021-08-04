@@ -13,6 +13,8 @@ const Login = (props) => {
     dispatch(loginActions.loginFormChange({ [e.target.name]: e.target.value }));
   };
 
+  const {error,errorMessage} = useSelector(state => state.login)
+
   useEffect(() => {
     if (user) {
       history.push("/landing");
@@ -50,6 +52,7 @@ const Login = (props) => {
               minLength="6"
             />
           </div>
+          <div>{error && errorMessage}</div>
           <button onClick={onClick} className="btn btn-primary">
             Submit
           </button>
