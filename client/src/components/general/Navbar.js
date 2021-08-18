@@ -1,18 +1,17 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../redux/actions/loginActions";
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+  const { username } = useSelector((state) => state.login);
   const authLinks = (
     <ul>
-      <li>
-        <Link to="/landing">
-          <i className="fas fa-user" />{" "}
-          <span className="hide-sm">Select Topic</span>
-        </Link>
-      </li>
+      <div>User: </div>
+
+      <div style={{ fontWeight: "bold" }}>{username}</div>
+
       <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt" />{" "}
@@ -51,7 +50,7 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.login,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

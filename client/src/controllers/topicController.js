@@ -1,12 +1,15 @@
 import client from ".";
 
+
 class topicController {
-  constructor() {}
-
+  //constructor() {}
+ 
   async topic(data) {
+  
     try {
+  
       const result = await client.post("landing/", data);
-
+      
       return result.data;
     } catch (err) {
       console.log(err);

@@ -1,32 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import * as topicActions from "../../../redux/actions/topicActions"
+import * as topicActions from "../../../redux/actions/topicActions";
 //import { getUser, removeUserSession } from './Utils/Common';
 
 //conseguir qe la info llegue al backend
 
 const Landing = () => {
   //const user = getUser();
-const topic = useSelector(state=> state.topic.topic)
-const history = useHistory()
-  const {selectedTopic} = useSelector(state => state.topic);
+  const loading = useSelector((state) => state.topic.loading);
+
+  const topic = useSelector((state) => state.topic.topic);
+  const history = useHistory();
+  const { selectedTopic } = useSelector((state) => state.topic);
   const dispatch = useDispatch();
   const onChange = (e) => {
-
     dispatch(topicActions.topicChange({ selectedTopic: e.target.value }));
   };
 
-  useEffect(()=>{
-    if (topic){
-history.push(`/quiz`)}
-  },[topic])
+  useEffect(() => {
+    if (topic) {
+      history.push(`/quiz`);
+    }
+  }, [topic]);
 
-const onClick = (e) => {
-  e.preventDefault()
- 
-  dispatch(topicActions.topic({ selectedTopic }));
-}
+  const onClick = (e) => {
+    e.preventDefault();
+
+    dispatch(topicActions.topic({ selectedTopic }));
+  };
 
   // handle click event of logout button
   // const handleLogout = (props) => {
@@ -36,7 +38,7 @@ const onClick = (e) => {
   //const [selectTopic, setTopic] = useState("");
 
   return (
-    <form >
+    <form>
       <div>
         <h1 className="large text-primary">
           {" "}
@@ -48,21 +50,30 @@ const onClick = (e) => {
         <label className="input-group-text" for="inputGroupSelect01">
           Topics
         </label>
-        <select onChange={onChange} value={selectedTopic} className="form-select" id="inputGroupSelect01">
+        <select
+          onChange={onChange}
+          value={selectedTopic}
+          className="form-select"
+          id="inputGroupSelect01"
+        >
           <option value=""></option>
           <option value="Music">Music</option>
           <option value="Sports">Sports</option>
           <option value="Node">Node</option>
         </select>
-        <button  onClick={onClick} className="btn btn-primary">
+        <button onClick={onClick} className="btn btn-primary">
           Submit
         </button>
+        <section>
+        
+          {loading && <p>Loading..</p>}
+        </section>
       </div>
       <div>
         <br />
         <h4 className="my-2"> There is always time to come back!</h4>
 
-        <input type="button" className='btn btn-dark my-1'  value="Logout" />
+        <input type="button" className="btn btn-dark my-1" value="Logout" />
       </div>
     </form>
   );

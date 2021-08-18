@@ -6,7 +6,10 @@ import topicReducer from "../reducers/topicReducer";
 
 const initialState = {};
 const middleware = [thunk];
-const rootReducer = combineReducers({ login: loginReducer, topic: topicReducer });
+const rootReducer = combineReducers({
+  login: loginReducer,
+  topic: topicReducer,
+});
 
 const store = createStore(
   rootReducer,

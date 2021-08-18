@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import Input from "../../input";
+//import Input from "../../input";
 import * as loginActions from "../../../redux/actions/loginActions";
 
-const Login = (props) => {
+const Login = () => {
   const user = useSelector((state) => state.login.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const { username, password } = useSelector((state) => state.login);
+  const { error, errorMessage } = useSelector((state) => state.login);
   const onChange = (e) => {
     dispatch(loginActions.loginFormChange({ [e.target.name]: e.target.value }));
   };
@@ -22,6 +23,7 @@ const Login = (props) => {
   const onClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
     dispatch(loginActions.login({ username, password }));
   };
   return (
@@ -33,7 +35,7 @@ const Login = (props) => {
         </p>
         <form className="form">
           <div className="form-group">
-            <Input
+            <input
               type="text"
               onChange={onChange}
               value={username}
@@ -41,7 +43,7 @@ const Login = (props) => {
             />
           </div>
           <div className="form-group">
-            <Input
+            <input
               type="password"
               placeholder="Password"
               value={password}
@@ -50,6 +52,8 @@ const Login = (props) => {
               minLength="6"
             />
           </div>
+          <div>{error && errorMessage} </div>
+          <br />
           <button onClick={onClick} className="btn btn-primary">
             Submit
           </button>
